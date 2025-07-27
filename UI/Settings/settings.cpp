@@ -104,6 +104,7 @@ Settings::Settings(QWidget *parent) : QWidget(parent)
    connect(tempBox, &ComboBox::onValueChanged, this, &Settings::saveTempUnit);
    connect(windBox, &ComboBox::onValueChanged, this, &Settings::saveWindUnit);
    connect(visibilityBox, &ComboBox::onValueChanged, this, &Settings::saveVisibilityUnit);
+   connect(themeBox, &ComboBox::onValueChanged, this, &Settings::saveDefaultTheme);
 }
 
 void Settings::saveDefaultsIfMissing() {
@@ -113,6 +114,7 @@ void Settings::saveDefaultsIfMissing() {
    if (!setting.contains("Temperature Unit")) saveTempUnit(tempBox->currentText());
    if (!setting.contains("Wind Speed Unit")) saveWindUnit(windBox->currentText());
    if (!setting.contains("Visibility Unit")) saveVisibilityUnit(visibilityBox->currentText());
+   if (!setting.contains("Default Theme")) saveVisibilityUnit(themeBox->currentText());
 }
 
 void Settings::saveCountry(const QString &text) {
@@ -139,6 +141,12 @@ void Settings::saveVisibilityUnit(const QString &text) {
    onSettingValueChanged();
 }
 
+void Settings::saveDefaultTheme(const QString &text) {
+   QSettings setting;
+   setting.setValue("Default Theme", text);
+   onSettingValueChanged();
+}
+
 void Settings::loadSettings() {
  QSettings setting;
 
@@ -146,13 +154,14 @@ void Settings::loadSettings() {
  QString temp = setting.value("Temperature Unit").toString();
  QString wind = setting.value("Wind Speed Unit").toString();
  QString visibility = setting.value("Visibility Unit").toString();
+ QString theme = setting.value("Default theme").toString();
 
  if (!country.isEmpty()) countryBox->setCurrentText(country);
  if (!temp.isEmpty()) tempBox->setCurrentText(temp);
  if (!wind.isEmpty()) windBox->setCurrentText(wind);
  if (!visibility.isEmpty()) visibilityBox->setCurrentText(visibility);
+ if (!theme.isEmpty()) themeBox->setCurrentText(theme);
 }
-
 
 QPixmap Settings::pixmap(int light, int dark) {
    return QPixmap(isDarkMode ? cardsIcons[dark] : cardsIcons[light]).scaled({24, 24}, Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation);
