@@ -99,7 +99,8 @@ private:
    void saveTempUnit(const QString &text);
    void saveWindUnit(const QString &text);
    void saveVisibilityUnit(const QString &text);
+   void saveDefaultTheme(const QString &text);
 
-   signals:
+signals:
    void onSettingValueChanged();
 };
