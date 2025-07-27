@@ -54,11 +54,13 @@ private:
    QLabel *tempMain, *tempSub;
    QLabel *windMain, *windSub;
    QLabel *visibilityMain, *visibilitySub;
+   QLabel *themeMain, *themeSub;
 
    QLabel *countryIcon = nullptr;
    QLabel *visibilityIcon = nullptr;
    QLabel *windIcon = nullptr;
    QLabel *tempIcon = nullptr;
+   QLabel *themeIcon = nullptr;
 
    ComboBox *countryBox = nullptr;
    QStringList countries = {
@@ -90,6 +92,7 @@ private:
    ComboBox *tempBox = nullptr;
    ComboBox *windBox = nullptr;
    ComboBox *visibilityBox = nullptr;
+   ComboBox *themeBox = nullptr;
 
    private slots:
    void saveCountry(const QString &text);
