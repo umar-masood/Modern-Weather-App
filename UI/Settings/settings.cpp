@@ -61,17 +61,6 @@ Settings::Settings(QWidget *parent) : QWidget(parent)
    visibilityBox->addItems({"Kilometers (km)", "Miles (mi)"});
    visibilityBox->setPlaceholderText("Select Visibility Speed Unit");
    visibilityBox->setCurrentItem(0);
-
-   // Theme
-   themeMain = new QLabel("Appearance");
-   themeSub = new QLabel("Select theme which you want to display");
-   themeIcon = new QLabel;
-
-   themeBox = new ComboBox;
-   themeBox->setSize(QSize(200, 36));
-   themeBox->addItems({"Light Mode", "Dark Mode"});
-   themeBox->setPlaceholderText("Select theme");
-   themeBox->setCurrentItem(0);
    
    // Cards
    QWidget* cards[] = {
@@ -79,7 +68,6 @@ Settings::Settings(QWidget *parent) : QWidget(parent)
       tempWidget = settingCard(tempMain, tempSub, tempIcon, tempBox),
       windWidget = settingCard(windMain, windSub, windIcon, windBox),
       visibilityWidget = settingCard(visibilityMain, visibilitySub, visibilityIcon, visibilityBox),
-      themeWidget = settingCard(themeMain, themeSub, themeIcon, themeBox)
    };
    
    QVBoxLayout *cardsLayout = new QVBoxLayout(this);
@@ -104,7 +92,6 @@ Settings::Settings(QWidget *parent) : QWidget(parent)
    connect(tempBox, &ComboBox::onValueChanged, this, &Settings::saveTempUnit);
    connect(windBox, &ComboBox::onValueChanged, this, &Settings::saveWindUnit);
    connect(visibilityBox, &ComboBox::onValueChanged, this, &Settings::saveVisibilityUnit);
-   connect(themeBox, &ComboBox::onValueChanged, this, &Settings::saveDefaultTheme);
 }
 
 void Settings::saveDefaultsIfMissing() {
@@ -114,7 +101,6 @@ void Settings::saveDefaultsIfMissing() {
    if (!setting.contains("Temperature Unit")) saveTempUnit(tempBox->currentText());
    if (!setting.contains("Wind Speed Unit")) saveWindUnit(windBox->currentText());
    if (!setting.contains("Visibility Unit")) saveVisibilityUnit(visibilityBox->currentText());
-   if (!setting.contains("Default Theme")) saveVisibilityUnit(themeBox->currentText());
 }
 
 void Settings::saveCountry(const QString &text) {
@@ -141,12 +127,6 @@ void Settings::saveVisibilityUnit(const QString &text) {
    onSettingValueChanged();
 }
 
-void Settings::saveDefaultTheme(const QString &text) {
-   QSettings setting;
-   setting.setValue("Default Theme", text);
-   onSettingValueChanged();
-}
-
 void Settings::loadSettings() {
  QSettings setting;
 
@@ -154,13 +134,11 @@ void Settings::loadSettings() {
  QString temp = setting.value("Temperature Unit").toString();
  QString wind = setting.value("Wind Speed Unit").toString();
  QString visibility = setting.value("Visibility Unit").toString();
- QString theme = setting.value("Default theme").toString();
 
  if (!country.isEmpty()) countryBox->setCurrentText(country);
  if (!temp.isEmpty()) tempBox->setCurrentText(temp);
  if (!wind.isEmpty()) windBox->setCurrentText(wind);
  if (!visibility.isEmpty()) visibilityBox->setCurrentText(visibility);
- if (!theme.isEmpty()) themeBox->setCurrentText(theme);
 }
 
 QPixmap Settings::pixmap(int light, int dark) {
@@ -173,10 +151,10 @@ void Settings::applyFontStyles() {
    headerText->setFont(font);
    headerText->setStyleSheet(QString("background-color: transparent; color: %1; letter-spacing: 2px;").arg(isDarkMode ? "white" : "black"));
 
-   for (QLabel* x : {countryMain, tempMain, visibilityMain, windMain, themeMain}) 
+   for (QLabel* x : {countryMain, tempMain, visibilityMain, windMain}) 
       x->setStyleSheet(QString("background-color: transparent; font-family: Segoe UI; font-size: 14px; margin: 0px; color: %1;").arg(isDarkMode ? "#FFFFFF" : "#000000")); 
 
-   for (QLabel* y : {countrySub, tempSub, visibilitySub, windSub, themeSub}) 
+   for (QLabel* y : {countrySub, tempSub, visibilitySub, windSub}) 
       y->setStyleSheet(QString("background-color: transparent; font-family: Segoe UI; font-size: 12px; margin: 0px; color: %1;").arg(isDarkMode ? "#BBBBBB" : "#666666"));
 }
 
@@ -186,14 +164,13 @@ void Settings::applyThemedIcons() {
    visibilityIcon->setPixmap(pixmap(9, 10));
    tempIcon->setPixmap(pixmap(5, 4));
    windIcon->setPixmap(pixmap(11, 12));
-   themeIcon->setPixmap(pixmap(6,7));
 }
 
 void Settings::applyStyleSheet() {
-   for (QWidget* card : {countryWidget, tempWidget, windWidget, visibilityWidget, themeWidget}) 
+   for (QWidget* card : {countryWidget, tempWidget, windWidget, visibilityWidget}) 
       card->setStyleSheet(QString( "QWidget { background-color: %1; border: none; border-radius: 8px; } QWidget::hover { background-color: %2; }").arg(isDarkMode ? "#2B2B2B" : "#FBFBFB").arg(isDarkMode ? "#3A3A3A" : "#F0F0F0"));   
 
-   for (QLabel* icons : {countryIcon, windIcon, tempIcon, visibilityIcon, themeIcon})
+   for (QLabel* icons : {countryIcon, windIcon, tempIcon, visibilityIcon})
       icons->setStyleSheet(QString("background-color: transparent;"));  
 
    setStyleSheet("#mainObj { background-color: transparent; border: none; }");
@@ -239,8 +216,7 @@ void Settings::setDarkMode(bool value) {
    tempBox->setDarkMode(isDarkMode);
    windBox->setDarkMode(isDarkMode);
    visibilityBox->setDarkMode(isDarkMode);
-   themeBox->setDarkMode(isDarkMode);
-
+   
    applyFontStyles();
    applyThemedIcons();
    applyStyleSheet();
