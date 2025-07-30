@@ -175,7 +175,7 @@ Home::Home(QWidget *parent) : Window(parent) {
 
    // Connect Signals/Slots
    setupConnections();
-   onThemeToggled();
+   themeChange();
 
    // Previous Data Load
    currentModel->fetchPreviousData();
@@ -232,13 +232,13 @@ void Home::setupConnections() {
    connect(currentModel, &CurrentWeatherModel::somethingWrong, this, &Home::displaySomethingWrongDailog);
    connect(forecastModel, &ForecastModel::forecastWeatherUpdated, this, &Home::displayForecastWeather);
    connect(refreshBtn, &Button::clicked, this, &Home::onRefreshBtnClicked);
-   //connect(themeBtn, &Button::clicked, this, &Home::onThemeToggled);
+   //connect(themeBtn, &Button::clicked, this, &Home::themeChange);
    connect(backBtn, &Button::clicked, this, &Home::onBackClicked);
    connect(settingsBtn, &Button::clicked, this, &Home::onSettingsClicked);
-   connect(settingsPage, &Settings::onSettingValueChanged, this, &Home::restoreLastSearch);
-   connect(settingsPage, &Settings::onSettingValueChanged, this, &Home::displayCurrentWeather);
-   connect(settingsPage, &Settings::onSettingValueChanged, this, &Home::displayForecastWeather);
-   connect(settingsPage, &Settings::onThemeValueChanged, this, &Home::onThemeToggled);
+   connect(settingsPage, &Settings::settingValueChanged, this, &Home::restoreLastSearch);
+   connect(settingsPage, &Settings::settingValueChanged, this, &Home::displayCurrentWeather);
+   connect(settingsPage, &Settings::settingValueChanged, this, &Home::displayForecastWeather);
+   connect(settingsPage, &Settings::themeValueChanged, this, &Home::themeChange);
 }
 
 void Home::hideCards() {
@@ -377,7 +377,7 @@ void Home::displayForecastWeather() {
    }
 }
 
-void Home::onThemeToggled() {
+void Home::themeChange() {
    QString theme = settings.value("Default theme").toString();
    if (theme == "Light theme") isDarkMode = false;
    else isDarkMode = true;
