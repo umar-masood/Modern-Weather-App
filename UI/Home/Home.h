@@ -133,7 +133,7 @@ private slots:
    void restoreLastSearch();
    void displayCurrentWeather();
    void displayForecastWeather();
-   void onThemeToggled();
+   void themeChange();
    void onBackClicked();
    void onSettingsClicked();
    void onInitialSearchPerformed();
