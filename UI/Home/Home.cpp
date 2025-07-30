@@ -5,6 +5,12 @@ Home::Home(QWidget *parent) : Window(parent) {
    setWindowTitle("Weather");
    setWindowIcon(QIcon(titleBarIconPath));
    resize(760,600);
+   QString theme = settings.value("Default theme").toString();
+   if (theme == "Light theme") {
+      isDarkMode = false;
+   } else {
+      isDarkMode = true;
+   }
 
    // TitleBar
    titleBar = _titleBarArea();
@@ -96,8 +102,6 @@ Home::Home(QWidget *parent) : Window(parent) {
    header->addSpacing(5);
    header->addWidget(refreshBtn, 0, Qt::AlignRight);
    header->addSpacing(5);
-   header->addWidget(themeBtn, 0, Qt::AlignRight);
-   header->addSpacing(5);
    header->addWidget(settingsBtn, 0, Qt::AlignRight);
 
    QHBoxLayout *cardsLayout = new QHBoxLayout;
@@ -171,6 +175,7 @@ Home::Home(QWidget *parent) : Window(parent) {
 
    // Connect Signals/Slots
    setupConnections();
+   onThemeToggled();
 
    // Previous Data Load
    currentModel->fetchPreviousData();
@@ -227,12 +232,13 @@ void Home::setupConnections() {
    connect(currentModel, &CurrentWeatherModel::somethingWrong, this, &Home::displaySomethingWrongDailog);
    connect(forecastModel, &ForecastModel::forecastWeatherUpdated, this, &Home::displayForecastWeather);
    connect(refreshBtn, &Button::clicked, this, &Home::onRefreshBtnClicked);
-   connect(themeBtn, &Button::clicked, this, &Home::onThemeToggled);
+   //connect(themeBtn, &Button::clicked, this, &Home::onThemeToggled);
    connect(backBtn, &Button::clicked, this, &Home::onBackClicked);
    connect(settingsBtn, &Button::clicked, this, &Home::onSettingsClicked);
    connect(settingsPage, &Settings::onSettingValueChanged, this, &Home::restoreLastSearch);
    connect(settingsPage, &Settings::onSettingValueChanged, this, &Home::displayCurrentWeather);
    connect(settingsPage, &Settings::onSettingValueChanged, this, &Home::displayForecastWeather);
+   connect(settingsPage, &Settings::onThemeValueChanged, this, &Home::onThemeToggled);
 }
 
 void Home::hideCards() {
@@ -372,7 +378,9 @@ void Home::displayForecastWeather() {
 }
 
 void Home::onThemeToggled() {
-   isDarkMode = !isDarkMode;
+   QString theme = settings.value("Default theme").toString();
+   if (theme == "Light theme") isDarkMode = false;
+   else isDarkMode = true;
 
    // App theme
    titleBarText->setStyleSheet(QString("color: %1;").arg(isDarkMode ? "white" : "black"));
