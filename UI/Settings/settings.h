@@ -16,6 +16,7 @@ private:
    void applyFontStyles();
    void applyThemedIcons();
    void applyStyleSheet();
+   void applyThemeToComponents();
    void loadSettings();
    void saveDefaultsIfMissing();
 
@@ -34,6 +35,7 @@ private:
    QWidget *windWidget = nullptr;
    QWidget *tempWidget = nullptr;
    QWidget *visibilityWidget = nullptr;
+   QWidget *themeWidget = nullptr;
 
    QVBoxLayout *cardsLayout = nullptr;
    QMap<int, QString> cardsIcons = {
@@ -53,11 +55,13 @@ private:
    QLabel *tempMain, *tempSub;
    QLabel *windMain, *windSub;
    QLabel *visibilityMain, *visibilitySub;
+   QLabel *themeMain, *themeSub;
 
    QLabel *countryIcon = nullptr;
    QLabel *visibilityIcon = nullptr;
    QLabel *windIcon = nullptr;
    QLabel *tempIcon = nullptr;
+   QLabel *themeIcon = nullptr;
 
    ComboBox *countryBox = nullptr;
    QStringList countries = {
@@ -89,13 +93,16 @@ private:
    ComboBox *tempBox = nullptr;
    ComboBox *windBox = nullptr;
    ComboBox *visibilityBox = nullptr;
+   ComboBox *themeBox = nullptr;
 
    private slots:
    void saveCountry(const QString &text);
    void saveTempUnit(const QString &text);
    void saveWindUnit(const QString &text);
    void saveVisibilityUnit(const QString &text);
+   void saveDefaultTheme(const QString &text);
 
 signals:
    void onSettingValueChanged();
+   void onThemeValueChanged();
 };
