@@ -103,6 +103,6 @@ private:
    void saveDefaultTheme(const QString &text);
 
 signals:
-   void onSettingValueChanged();
-   void onThemeValueChanged();
+   void settingValueChanged();
+   void themeValueChanged();
 };
