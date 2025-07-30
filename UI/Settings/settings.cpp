@@ -99,11 +99,11 @@ Settings::Settings(QWidget *parent) : QWidget(parent)
    saveDefaultsIfMissing();
    loadSettings();
 
-   connect(countryBox, &ComboBox::onValueChanged, this, &Settings::saveCountry);
-   connect(tempBox, &ComboBox::onValueChanged, this, &Settings::saveTempUnit);
-   connect(windBox, &ComboBox::onValueChanged, this, &Settings::saveWindUnit);
-   connect(visibilityBox, &ComboBox::onValueChanged, this, &Settings::saveVisibilityUnit);
-   connect(themeBox, &ComboBox::onValueChanged, this, &Settings::saveDefaultTheme);
+   connect(countryBox, &ComboBox::valueChanged, this, &Settings::saveCountry);
+   connect(tempBox, &ComboBox::valueChanged, this, &Settings::saveTempUnit);
+   connect(windBox, &ComboBox::valueChanged, this, &Settings::saveWindUnit);
+   connect(visibilityBox, &ComboBox::valueChanged, this, &Settings::saveVisibilityUnit);
+   connect(themeBox, &ComboBox::valueChanged, this, &Settings::saveDefaultTheme);
 
    applyThemeToComponents();
 }
@@ -121,31 +121,31 @@ void Settings::saveDefaultsIfMissing() {
 void Settings::saveCountry(const QString &text) {
    QSettings setting;
    setting.setValue("Country", text);
-   emit onSettingValueChanged();
+   emit settingValueChanged();
 }
 
 void Settings::saveTempUnit(const QString &text) {
    QSettings setting;
    setting.setValue("Temperature Unit", text);
-   emit onSettingValueChanged();
+   emit settingValueChanged();
 }
 
 void Settings::saveWindUnit(const QString &text) {
    QSettings setting;
    setting.setValue("Wind Speed Unit", text);
-   emit onSettingValueChanged();
+   emit settingValueChanged();
 }
 
 void Settings::saveVisibilityUnit(const QString &text) {
    QSettings setting;
    setting.setValue("Visibility Unit", text);
-   emit onSettingValueChanged();
+   emit settingValueChanged();
 }
 
 void Settings::saveDefaultTheme(const QString &text) {
    QSettings setting;
    setting.setValue("Default theme", text);
-   emit onThemeValueChanged();
+   emit themeValueChanged();
 }
 
 void Settings::applyThemeToComponents() {
