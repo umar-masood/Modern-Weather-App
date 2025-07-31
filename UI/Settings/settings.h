@@ -37,6 +37,9 @@ private:
    QWidget *visibilityWidget = nullptr;
    QWidget *themeWidget = nullptr;
 
+   QWidget *aboutAppWidget = nullptr;
+   QVBoxLayout *aboutAppLayout = nullptr;
+
    QVBoxLayout *cardsLayout = nullptr;
    QMap<int, QString> cardsIcons = {
       {2, ":/Assets/Icons/country_dark.svg"},
@@ -62,6 +65,9 @@ private:
    QLabel *windIcon = nullptr;
    QLabel *tempIcon = nullptr;
    QLabel *themeIcon = nullptr;
+
+   QLabel *aboutAppMain = nullptr;
+   QLabel *aboutAppSub = nullptr;
 
    ComboBox *countryBox = nullptr;
    QStringList countries = {
