@@ -6,7 +6,9 @@ A sleek, responsive, and modern **Weather Application** built using **C++ and Qt
 =================
 <img width="1361" height="714" alt="Screenshot (1)" src="https://github.com/user-attachments/assets/7894604c-9df8-496a-a83d-6e9d81e1d038" />
 <img width="1356" height="715" alt="Screenshot (2)" src="https://github.com/user-attachments/assets/26dc97de-829f-47f2-bfa3-ebc0a81bdb1f" />
-<img width="1362" height="713" alt="image" src="https://github.com/user-attachments/assets/85d8e434-036c-434f-8221-61a1bd4040c8" />
+<img width="1365" height="708" alt="sB" src="https://github.com/user-attachments/assets/a544f46a-cdb7-4b7c-9c22-3051b848dbe3" />
+<img width="1365" height="705" alt="sA" src="https://github.com/user-attachments/assets/9fb4ede6-fd31-4f4e-9bd8-f64f59e0c07d" />
+
 
 🎯 Purpose
 ============
