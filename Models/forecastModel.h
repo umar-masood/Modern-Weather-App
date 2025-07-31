@@ -72,6 +72,7 @@ class ForecastModel : public QObject{
       {1237, ":/Assets/Icons/ice_pellets.png"},
       {1261, ":/Assets/Icons/ice_pellets.png"},
       {1264, ":/Assets/Icons/ice_pellets.png"},
+      {1243, ":/Assets/Icons/heavy_rain.png"},
       
       {1072, ":/Assets/Icons/freezing_drizzle.png"},
       {1168, ":/Assets/Icons/freezing_drizzle.png"},
