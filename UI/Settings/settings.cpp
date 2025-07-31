@@ -72,6 +72,19 @@ Settings::Settings(QWidget *parent) : QWidget(parent)
    themeBox->addItems({"Light theme", "Dark theme"});
    themeBox->setCurrentIndex(0);
    
+   // About an App
+   aboutAppWidget = new QWidget;
+   aboutAppLayout = new QVBoxLayout(aboutAppWidget);
+
+   aboutAppMain = new QLabel("About this app");
+   aboutAppSub = new QLabel;
+   aboutAppSub->setText("Weather 2.0.0 \n© 2025 Umar Creations");
+
+   aboutAppLayout->addWidget(aboutAppMain, 0, Qt::AlignLeft);
+   aboutAppLayout->addSpacing(5);
+   aboutAppLayout->addWidget(aboutAppSub, 0, Qt::AlignLeft);
+   aboutAppLayout->addStretch();
+
    // Cards
    QWidget* cards[] = {
       countryWidget = settingCard(countryMain, countrySub, countryIcon, countryBox),
@@ -79,6 +92,7 @@ Settings::Settings(QWidget *parent) : QWidget(parent)
       windWidget = settingCard(windMain, windSub, windIcon, windBox),
       visibilityWidget = settingCard(visibilityMain, visibilitySub, visibilityIcon, visibilityBox),
       themeWidget = settingCard(themeMain, themeSub, themeIcon, themeBox),
+      aboutAppWidget,
    };
    
    QVBoxLayout *cardsLayout = new QVBoxLayout(this);
@@ -180,7 +194,6 @@ QPixmap Settings::pixmap(int light, int dark) {
 void Settings::applyFontStyles() {
    QFont font("Outfit", 20);
    font.setStyleName("Bold");
-   headerText->setFont(font);
    headerText->setStyleSheet(QString("background-color: transparent; color: %1; letter-spacing: 2px;").arg(isDarkMode ? "white" : "black"));
 
    for (QLabel* x : {countryMain, tempMain, visibilityMain, windMain, themeMain}) 
@@ -188,6 +201,16 @@ void Settings::applyFontStyles() {
 
    for (QLabel* y : {countrySub, tempSub, visibilitySub, windSub, themeSub}) 
       y->setStyleSheet(QString("background-color: transparent; font-family: Segoe UI; font-size: 12px; margin: 0px; color: %1;").arg(isDarkMode ? "#BBBBBB" : "#666666"));
+
+   for (QLabel *z : {headerText, aboutAppMain}) {
+      z->setFont(font);
+   }
+
+   aboutAppMain->setStyleSheet(QString("color: %1; font-size: 14px; margin: 0; background-color: transparent;").arg(isDarkMode ? "white" : "black"));
+
+   font.setStyleName("Medium");
+   aboutAppSub->setFont(font);
+   aboutAppSub->setStyleSheet(QString("color: %1; font-size: 14px; margin: 0; background-color: transparent;").arg(isDarkMode ? "white" : "black"));
 }
 
 void Settings::applyThemedIcons() {
@@ -206,7 +229,9 @@ void Settings::applyStyleSheet() {
    for (QLabel* icons : {countryIcon, windIcon, tempIcon, visibilityIcon, themeIcon})
       icons->setStyleSheet(QString("background-color: transparent;"));  
 
-   setStyleSheet("#mainObj { background-color: transparent; border: none; }");
+   QString stylesheet = "background-color: transparent; border: none;";
+   setStyleSheet(stylesheet);
+   aboutAppWidget->setStyleSheet(stylesheet);
 }
 
 QWidget* Settings::settingCard(QLabel *main, QLabel *sub, QLabel *icon, ComboBox *w) {
