@@ -6,22 +6,21 @@ Home::Home(QWidget *parent) : Window(parent) {
    setWindowIcon(QIcon(titleBarIconPath));
    resize(760,600);
    QString theme = settings.value("Default theme").toString();
-   if (theme == "Light theme") {
-      isDarkMode = false;
-   } else {
-      isDarkMode = true;
-   }
-
+   if (theme == "Light theme") isDarkMode = false;
+   else isDarkMode = true;
+   
    // TitleBar
    titleBar = _titleBarArea();
 
    // Title Bar Icon
    titleBarIcon = new QLabel;
+   titleBarIcon->setAttribute(Qt::WA_TranslucentBackground, true);
    titleBarIcon->setPixmap(QPixmap(titleBarIconPath).scaled(QSize(24,24), Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation));
 
    // TitleBar Text
    titleBarText = new QLabel;
    titleBarText->setFont(QFont("Segoe UI", 12));
+   titleBarText->setAttribute(Qt::WA_TranslucentBackground, true);
    titleBarText->setStyleSheet("color: black;");
    titleBarText->setContentsMargins(0, 2, 0, 0);
    titleBarText->setText("Weather");
@@ -29,6 +28,7 @@ Home::Home(QWidget *parent) : Window(parent) {
    // Back Button
    backBtn = button(backIconLight, backIconDark, QSize(22,22), QSize(30,30));
    backBtnContainer = new QWidget;
+   backBtnContainer->setAttribute(Qt::WA_TranslucentBackground, true);
    backBtnLayout = new QHBoxLayout(backBtnContainer);
    backBtnLayout->setContentsMargins(0,0,0,0);
    backBtnLayout->setSpacing(0);
@@ -41,7 +41,7 @@ Home::Home(QWidget *parent) : Window(parent) {
    // TitleBar Drag Spacer
    dragSpacer = new QWidget;
    dragSpacer->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
-   dragSpacer->setAttribute(Qt::WA_TransparentForMouseEvents, false); 
+   dragSpacer->setAttribute(Qt::WA_TranslucentBackground, true);     
 
    // Setting TitleBar Layout
    _titleBarLayout()->addWidget(backBtnContainer, 0, Qt::AlignLeft);
