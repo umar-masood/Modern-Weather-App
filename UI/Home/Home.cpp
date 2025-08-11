@@ -22,7 +22,7 @@ Home::Home(QWidget *parent) : Window(parent) {
    titleBarText->setFont(QFont("Segoe UI", 12));
    titleBarText->setAttribute(Qt::WA_TranslucentBackground, true);
    titleBarText->setStyleSheet("color: black;");
-   titleBarText->setContentsMargins(0, 2, 0, 0);
+   titleBarText->setContentsMargins(0,  2, 0, 0);
    titleBarText->setText("Weather");
 
    // Back Button
