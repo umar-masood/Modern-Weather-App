@@ -10,7 +10,8 @@ void loadFonts() {
      ":/Assets/Fonts/Outfit-Thin.ttf",
      ":/Assets/Fonts/Outfit-Black.ttf",
      ":/Assets/Fonts/Outfit-Bold.ttf",
-     ":/Assets/Fonts/Outfit-ExtraBold.ttf"
+     ":/Assets/Fonts/Outfit-ExtraBold.ttf",
+     ":/Assets/Fonts/Segoe Fluent Icons.ttf"
    };
 
    for (const QString &font : fontPaths) {
