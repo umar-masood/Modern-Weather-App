@@ -105,5 +105,6 @@
     <file>../Assets/Fonts/Outfit-Black.ttf</file>
     <file>../Assets/Fonts/Outfit-Bold.ttf</file>
     <file>../Assets/Fonts/Outfit-ExtraBold.ttf</file>
+    <file>../Assets/Fonts/Segoe Fluent Icons.ttf</file>
     </qresource>
 </RCC>
