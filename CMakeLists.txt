@@ -60,7 +60,7 @@ add_executable(WeatherApp
 )
 
 # Link Qt libraries
-target_link_libraries(WeatherApp PRIVATE Qt6::Core Qt6::Gui Qt6::Widgets Qt6::Network dwmapi)
+target_link_libraries(WeatherApp PRIVATE Qt6::Core Qt6::Gui Qt6::Widgets Qt6::Network dwmapi user32)
 set_target_properties(WeatherApp PROPERTIES WIN32_EXECUTABLE TRUE)
 
 if(WIN32)
