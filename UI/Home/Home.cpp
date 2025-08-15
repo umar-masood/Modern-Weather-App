@@ -32,7 +32,7 @@ Home::Home(QWidget *parent) : Window(parent) {
    backBtnLayout = new QHBoxLayout(backBtnContainer);
    backBtnLayout->setContentsMargins(0,0,0,0);
    backBtnLayout->setSpacing(0);
-   backBtnLayout->addSpacing(5);
+   backBtnLayout->addSpacing(0);
    backBtnLayout->addWidget(backBtn, 0, Qt::AlignLeft);
    backBtnContainer->setVisible(false);
    backBtnContainer->setFixedWidth(36);
