@@ -26,7 +26,7 @@ Home::Home(QWidget *parent) : Window(parent) {
    titleBarText->setText("Weather");
 
    // Back Button
-   backBtn = button(backIconLight, backIconDark, QSize(22,22), QSize(30,30));
+   backBtn = button("\uE830", 12, QSize(30,30));
    backBtnContainer = new QWidget;
    backBtnContainer->setAttribute(Qt::WA_TranslucentBackground, true);
    backBtnLayout = new QHBoxLayout(backBtnContainer);
@@ -65,15 +65,15 @@ Home::Home(QWidget *parent) : Window(parent) {
    searchField2 = searchField();
 
    // Refresh Button
-   refreshBtn = button(refreshIconLight, refreshIconDark, QSize(25, 24), QSize(36, 36));
+   refreshBtn = button("\uE72C", 16, QSize(30, 30));
    refreshTip = new ToolTip(refreshBtn, "Refresh");
 
    // Theme Button
-   themeBtn = button(themeIconLight, themeIconDark, QSize(25, 24), QSize(36, 36));
+   themeBtn = button("", 16, QSize(36, 36));
    themeTip = new ToolTip(themeBtn, "Theme Mode");
 
    // Settings Button
-   settingsBtn = button(settingsIconLight, settingsIconDark, QSize(25, 24), QSize(36, 36));
+   settingsBtn = button("\uE713", 16, QSize(30, 30));
    settingsTip = new ToolTip(settingsBtn, "Settings");
    
    // Current Weather Card
@@ -182,11 +182,10 @@ Home::Home(QWidget *parent) : Window(parent) {
    forecastModel->fetchPreviousData();
 }
 
-Button* Home::button(const QString &iconLight, const QString &iconDark, QSize iconSize, QSize buttonSize) {
+Button* Home::button(const QString &iconCode, int iconSize, QSize buttonSize) {
    Button *b = new Button;
-   b->setIconPaths(iconLight, iconDark);
+   b->setUnicodeIcon(iconCode, iconSize);
    b->setSecondary(true);
-   b->setIconSize(iconSize);
    b->setDisplayMode(Button::ToolButton);
    b->setSize(buttonSize);
    return b;
@@ -276,7 +275,6 @@ void Home::applyUserLocation(TextField *searchField) {
 
 void Home::dialogsUninteraction(Dialog *dialog) {
    dialog->setParent(this);
-   dialog->setUninteractiveWidgets(contentWidget, titleBar);
    dialog->show();
 }
 
@@ -393,16 +391,9 @@ void Home::themeChange() {
    searchField2->setDarkMode(isDarkMode);
 
    themeBtn->setDarkMode(isDarkMode);
-   themeBtn->setIconPaths(themeIconLight, themeIconDark);
-
    settingsBtn->setDarkMode(isDarkMode);
-   settingsBtn->setIconPaths(settingsIconLight, settingsIconDark);
-
    backBtn->setDarkMode(isDarkMode);
-   backBtn->setIconPaths(backIconLight, backIconDark);
-
    refreshBtn->setDarkMode(isDarkMode);
-   refreshBtn->setIconPaths(refreshIconLight, refreshIconDark);
 
    // Weather page elements theme
    currentWeatherCard->setDarkMode(isDarkMode);

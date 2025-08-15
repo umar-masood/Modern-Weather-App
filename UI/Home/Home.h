@@ -113,7 +113,7 @@ private:
    ToolTip *settingsTip = nullptr;
    ToolTip *refreshTip = nullptr;
 
-   Button* button(const QString &iconLight, const QString &iconDark, QSize iconSize, QSize buttonSize);
+   Button* button(const QString &iconCode, int iconSize, QSize buttonSize);
    Dialog* dialog(const QString &iconPath, QSize iconSize, const QString &message, const QString &btnText);
    ForecastCard *forecastCard();
    TextField *searchField();
