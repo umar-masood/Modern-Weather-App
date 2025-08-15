@@ -124,6 +124,7 @@ private:
    void displayNoLocationFoundDailog();
    void displaySomethingWrongDailog();
    void loaderPos();
+   void dialogPos();
    void applyLocationToModels(const QString &location);
    bool checkNetworkStatus();
 

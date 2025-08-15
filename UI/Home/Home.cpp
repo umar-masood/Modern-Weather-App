@@ -318,8 +318,19 @@ void Home::loaderPos() {
    }
 }
 
+void Home::dialogPos() {
+   for (auto *d : {noInternetDialog, noLocationDialog, wentWrongDialog}) {
+      if (d && d->isVisible()) {
+         int x = (width() - d->width()) / 2;
+         int y = (height() - d->height()) / 2;
+         d->move(x, y);
+      }
+   }
+}
+
 void Home::resizeEvent(QResizeEvent *event) {
    loaderPos();
+   dialogPos();
    Window::resizeEvent(event);
 }
 
