@@ -59,4 +59,4 @@ You can either **build from source** or **download the pre-built Windows install
 ### 🔹 Option 2: Build from Source  
 1. Clone the repository:  
    ```bash
-   git clone https://github.com/your-username/modern-weather-app.git
+   git clone https://github.com/umar-masood/modern-weather-app.git
