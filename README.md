@@ -21,7 +21,6 @@ This project demonstrates my ability to build **cross-platform desktop applicati
 ---
 
 ## 🛠️ Tech Stack  
-[![Watch the video](https://img.youtube.com/vi/0yFDOvwPGy0/0.jpg)](https://www.youtube.com/watch?v=0yFDOvwPGy0)
 <p align="left">
   <img src="https://img.shields.io/badge/C++-00599C?style=for-the-badge&logo=cplusplus&logoColor=white" />
   <img src="https://img.shields.io/badge/Qt-41CD52?style=for-the-badge&logo=qt&logoColor=white" />
@@ -33,6 +32,10 @@ This project demonstrates my ability to build **cross-platform desktop applicati
 
 ---
 
+**Check out the demonstration video of this application on YouTube by clicking the thumbnail below:**
+[![Watch the video](https://img.youtube.com/vi/0yFDOvwPGy0/0.jpg)](https://www.youtube.com/watch?v=0yFDOvwPGy0)
+
+---
 ## 📸 Screenshots  
 
 <p align="center">  
