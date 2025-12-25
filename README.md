@@ -7,8 +7,6 @@ This project demonstrates my ability to build **cross-platform desktop applicati
 ✅ Efficient **real-time API integration**  
 ✅ Professional **Windows deployment (.exe)**  
 
----
-
 ## ✨ Features  
 
 - 📅 **7-Day Real-Time Forecast**  
