@@ -1,6 +1,6 @@
-🌦️ Modern Weather App  
+🌦️ Weatherly - Modern Weather App  
 =========================
-A sleek and modern **Weather Application** built with **C++ and Qt**, styled using **QSS (Qt Style Sheets)**, and powered by a **RESTful Weather API**.  
+A sleek and modern **Weatherly Application** built with **C++ and Qt**, styled using **QSS (Qt Style Sheets)**, and powered by a **RESTful Weather API**.  
 
 This project demonstrates my ability to build **cross-platform desktop applications** with:  
 ✅ Clean **UI/UX** design  
