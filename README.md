@@ -16,8 +16,6 @@ This project demonstrates my ability to build **cross-platform desktop applicati
 - 🖥️ **Windows Executable (.exe)** available in [Releases](../../releases)  
 - 🧩 Clean **OOP-based code** for maintainability  
 
----
-
 ## 🛠️ Tech Stack  
 <p align="left">
   <img src="https://img.shields.io/badge/C++-00599C?style=for-the-badge&logo=cplusplus&logoColor=white" />
@@ -30,23 +28,27 @@ This project demonstrates my ability to build **cross-platform desktop applicati
 
 ---
 
-**Check out the demonstration video of this application on YouTube by clicking the thumbnail below:**
-[![Watch the video](https://img.youtube.com/vi/0yFDOvwPGy0/0.jpg)](https://www.youtube.com/watch?v=0yFDOvwPGy0)
+**Check out the demonstration video of this application on YouTube by clicking this link:**
+(https://www.youtube.com/watch?v=0yFDOvwPGy0)
 
----
 ## 📸 Screenshots  
 
 <p align="center">  
-  <img width="400" src="https://github.com/user-attachments/assets/7894604c-9df8-496a-a83d-6e9d81e1d038" />  
-  <img width="400" src="https://github.com/user-attachments/assets/26dc97de-829f-47f2-bfa3-ebc0a81bdb1f" />  
+  <img width="760" src="https://github.com/user-attachments/assets/7894604c-9df8-496a-a83d-6e9d81e1d038" />  
 </p>  
 
 <p align="center">  
-  <img width="400" src="https://github.com/user-attachments/assets/a544f46a-cdb7-4b7c-9c22-3051b848dbe3" />  
-  <img width="400" src="https://github.com/user-attachments/assets/9fb4ede6-fd31-4f4e-9bd8-f64f59e0c07d" />  
+  <img width="760" src="https://github.com/user-attachments/assets/26dc97de-829f-47f2-bfa3-ebc0a81bdb1f" />  
 </p>  
 
----
+<p align="center">  
+  <img width="760" src="https://github.com/user-attachments/assets/a544f46a-cdb7-4b7c-9c22-3051b848dbe3" />  
+</p>  
+
+<p align="center">  
+  <img width="760" src="https://github.com/user-attachments/assets/9fb4ede6-fd31-4f4e-9bd8-f64f59e0c07d" />  
+</p>  
+
 
 ## 🚀 Installation  
 
